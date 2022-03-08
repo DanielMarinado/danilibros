@@ -43,10 +43,12 @@ const bookSchema = new mongoose.Schema(
             trim: true,
             maxlength: 32,
         },
-        category: {
-            type: ObjectId,
-            ref: "Category",
-        },
+        category: [
+            {
+                type: ObjectId,
+                ref: "Category",
+            }
+        ],
         country: {
             type: ObjectId,
             ref: "Country"
@@ -64,8 +66,8 @@ const bookSchema = new mongoose.Schema(
             enum: ["Paperback", "Hardcover", "Booket", "Kindle Edition"]
         },
         editorial: {
-            type: String,
-            enum: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
+            type: ObjectId,
+            ref: "Editorial",
         },
         languages: {
             type: String,
