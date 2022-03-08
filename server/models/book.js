@@ -49,6 +49,12 @@ const bookSchema = new mongoose.Schema(
                 ref: "Category",
             }
         ],
+        author: [
+            {
+                type: ObjectId,
+                ref: "Author",
+            }
+        ],
         country: {
             type: ObjectId,
             ref: "Country"
