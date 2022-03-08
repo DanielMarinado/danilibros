@@ -27,8 +27,15 @@ const bookSchema = new mongoose.Schema(
         description: {
             type: String,
             required: true,
+            trim: true,
             maxlength: 2000,
             text: true,
+        },
+        edition: {
+            type: String,
+            required: true,
+            maxlength: 500,
+            trim: true,
         },
         price: {
             type: Number,
