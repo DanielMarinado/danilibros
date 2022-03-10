@@ -3,7 +3,7 @@ const { ObjectId } = mongoose.Schema;
 
 const bookSchema = new mongoose.Schema(
     {
-        title: {
+        title: {  // no es único ya que un libro puede ser publicado por otras editoriales
             type: String,
             trim: true,
             required: true,
@@ -18,7 +18,7 @@ const bookSchema = new mongoose.Schema(
             maxlength: 32,
             text: true,
         },
-        slug: {
+        slug: {  // el slug será compuesto, title + editorial, ya que un mismo titulo puede ser publicado por otra editorial bajo otro isbn
             type: String,
             unique: true,
             lowercase: true,
