@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { create, list, read, update, removeSoft } = require("../controllers/category");
+const { authCheck, adminCheck } = require("../middlewares/auth");
 
 /**
  * @swagger
@@ -24,12 +25,12 @@ const { create, list, read, update, removeSoft } = require("../controllers/categ
  *       400:
  *         description: bad request
  */    
-router.post("/category", create);
+router.post("/category", authCheck, adminCheck, create);
 
 router.get("/categories", list);
 router.get("/category/:slug", read);
-router.put("/category/:slug", update);
-router.patch("/category/:slug", removeSoft);
+router.put("/category/:slug", authCheck, adminCheck, update);
+router.patch("/category/:slug", authCheck, adminCheck, removeSoft);
 
 module.exports = router;
 
